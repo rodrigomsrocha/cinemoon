@@ -1,9 +1,12 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
+import { useSetRecoilState } from "recoil";
+import { movieIdState } from "../../../recoil/movie/movieId";
 
 interface ItemProps {
   movie: {
+    id: string;
     title: string;
     genres: {
       id: number;
@@ -15,6 +18,11 @@ interface ItemProps {
 }
 
 export const Item = ({ movie }: ItemProps) => {
+  const setMovieId = useSetRecoilState(movieIdState);
+  const handleMovieClick = (movieId: string) => {
+    setMovieId(movieId);
+  };
+
   return (
     <Flex
       align="flex-end"
@@ -26,6 +34,7 @@ export const Item = ({ movie }: ItemProps) => {
       p={10}
       minW="full"
       h="96"
+      onClick={() => handleMovieClick(movie.id)}
     >
       <Flex justify="flex-start" direction="column" gap="4">
         <Heading>{movie.title}</Heading>

@@ -22,11 +22,6 @@ interface MovieSlideProps {
 
 const MotionHStack = motion<StackProps>(HStack);
 
-interface MovieSlideProps {
-  children?: ReactNode;
-  gap?: number;
-}
-
 export const MovieSlide = ({ gap = 12, movies }: MovieSlideProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPrevButtonDisabbled, setIsPrevButtonDisabbled] = useState(false);
