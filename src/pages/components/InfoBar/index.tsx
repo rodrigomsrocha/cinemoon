@@ -42,6 +42,16 @@ export const InfoBar = () => {
       bg="white"
       overflow="auto"
       gap="6"
+      sx={{
+        "&::-webkit-scrollbar": {
+          width: "6px",
+          backgroundColor: `#D6BCFA`,
+        },
+        "&::-webkit-scrollbar-thumb": {
+          borderRadius: "2px",
+          backgroundColor: `#6B46C1`,
+        },
+      }}
     >
       {movieDetails?.poster ? (
         <Image borderRadius={10} src={movieDetails.poster} />
@@ -78,7 +88,7 @@ export const InfoBar = () => {
                 variant="link"
                 colorScheme="purple"
               >
-                Show more
+                {showText ? "Show less" : "Show more"}
               </Button>
             </VStack>
           </Box>

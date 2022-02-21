@@ -35,6 +35,7 @@ export const Item = ({ movie }: ItemProps) => {
       minW="full"
       h="96"
       onClick={() => handleMovieClick(movie.id)}
+      cursor="pointer"
     >
       <Flex justify="flex-start" direction="column" gap="4">
         <Heading>{movie.title}</Heading>

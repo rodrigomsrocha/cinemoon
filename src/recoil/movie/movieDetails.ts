@@ -19,7 +19,7 @@ export const movieDetailsState = selector({
 
     const hours = Math.floor(movie.runtime / 60);
     const minutes = movie.runtime % 60;
-    const runtime = `${hours}h${minutes}min`;
+    const runtime = `${hours}h ${minutes}min`;
 
     return {
       poster: `https://image.tmdb.org/t/p/w200/${posterData.posters[0].file_path}`,
