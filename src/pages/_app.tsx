@@ -4,6 +4,7 @@ import React from "react";
 import { RecoilRoot } from "recoil";
 import "../styles/globals.css";
 import { InfoBar } from "./components/InfoBar";
+import { LoadingInfobar } from "./components/InfoBar/LoadingInfobar";
 import { Layout } from "./components/Layout";
 import { Sidebar } from "./components/Sidebar";
 
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Layout>
           <Sidebar />
           <Component {...pageProps} />
-          <React.Suspense fallback={<h1>loading...</h1>}>
+          <React.Suspense fallback={<LoadingInfobar />}>
             <InfoBar />
           </React.Suspense>
         </Layout>

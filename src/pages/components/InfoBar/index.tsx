@@ -85,7 +85,7 @@ export const InfoBar = () => {
           <Box>
             <Flex align="center" w="full">
               <FiClock size="18" />
-              <Text mr="2">{movieDetails.runtime}m</Text>
+              <Text mr="2">{movieDetails.runtime}</Text>
               <FaImdb size="18" />
               <Text>{movieDetails.rating}</Text>
             </Flex>

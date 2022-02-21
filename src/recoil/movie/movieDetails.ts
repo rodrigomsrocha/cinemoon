@@ -17,11 +17,15 @@ export const movieDetailsState = selector({
 
     const { data: rating } = await ratingApi.get(`/?i=${movie.imdb_id}`);
 
+    const hours = Math.floor(movie.runtime / 60);
+    const minutes = movie.runtime % 60;
+    const runtime = `${hours}h${minutes}min`;
+
     return {
       poster: `https://image.tmdb.org/t/p/w200/${posterData.posters[0].file_path}`,
       title: movie.original_title,
       synopsis: movie.overview,
-      runtime: movie.runtime,
+      runtime,
       rating: rating.imdbRating,
       genres: movie.genres.map((genre) => {
         return genre.name;
