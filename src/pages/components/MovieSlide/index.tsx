@@ -1,6 +1,6 @@
 import { Box, HStack, IconButton, StackProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Item } from "./Item";
 
@@ -24,9 +24,8 @@ const MotionHStack = motion<StackProps>(HStack);
 
 export const MovieSlide = ({ gap = 12, movies }: MovieSlideProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPrevButtonDisabbled, setIsPrevButtonDisabbled] = useState(false);
-  const [isNextButtonDisabbled, setIsNextButtonDisabbled] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const variants = {
     moving: {
@@ -42,31 +41,32 @@ export const MovieSlide = ({ gap = 12, movies }: MovieSlideProps) => {
   const [isMoving, setIsMoving] = useState(false);
 
   const moveToNext = () => {
-    if (currentSlide !== movies.length - 1) {
-      setCurrentSlide((prevState) => (prevState += 1));
-      setIsMoving(true);
-      setTimeout(() => {
-        setIsMoving(false);
-      }, movingTransition.duration * 1000 - 1500);
-      setIsPrevButtonDisabbled(false);
-    } else {
-      setIsNextButtonDisabbled(true);
-      return;
+    if (currentSlide === movies.length - 1) {
+      setCurrentSlide(-1);
     }
+    setCurrentSlide((prevState) => (prevState += 1));
+    setIsMoving(true);
+    setTimeout(() => {
+      setIsMoving(false);
+    }, movingTransition.duration * 1000 - 1500);
   };
   const moveToPrev = () => {
-    if (currentSlide !== 0) {
-      setCurrentSlide((prevState) => (prevState -= 1));
-      setIsMoving(true);
-      setTimeout(() => {
-        setIsMoving(false);
-      }, movingTransition.duration * 1000 - 1500);
-      setIsNextButtonDisabbled(false);
-    } else {
-      setIsPrevButtonDisabbled(true);
-      return;
+    if (currentSlide === 0) {
+      setCurrentSlide(movies.length);
     }
+    setCurrentSlide((prevState) => (prevState -= 1));
+    setIsMoving(true);
+    setTimeout(() => {
+      setIsMoving(false);
+    }, movingTransition.duration * 1000 - 1500);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      buttonRef.current.click();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Box overflow="hidden" w="full" position="relative">
@@ -78,7 +78,6 @@ export const MovieSlide = ({ gap = 12, movies }: MovieSlideProps) => {
         aria-label="left-arrow"
         icon={<FiArrowLeft color="white" />}
         bg="purple.200"
-        disabled={isPrevButtonDisabbled}
         opacity={0.7}
         onClick={moveToPrev}
         _hover={{
@@ -99,11 +98,11 @@ export const MovieSlide = ({ gap = 12, movies }: MovieSlideProps) => {
         })}
       </MotionHStack>
       <IconButton
+        ref={buttonRef}
         top="40%"
         opacity={0.7}
         position="absolute"
         right={10}
-        disabled={isNextButtonDisabbled}
         zIndex={5}
         aria-label="left-arrow"
         icon={<FiArrowRight color="white" />}
