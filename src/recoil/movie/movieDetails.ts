@@ -13,7 +13,6 @@ export const movieDetailsState = selector({
     const { data: providers } = await movieApi.get(
       `/movie/${movieId}/watch/providers`
     );
-    console.log(providers);
 
     const { data: rating } = await ratingApi.get(`/?i=${movie.imdb_id}`);
 
@@ -34,6 +33,7 @@ export const movieDetailsState = selector({
         return {
           provider_logo: `https://image.tmdb.org/t/p/original/${provider.logo_path}`,
           provider_name: provider.provider_name,
+          provider_id: provider.provider_id,
         };
       }),
     };

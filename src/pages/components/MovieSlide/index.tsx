@@ -1,6 +1,6 @@
 import { Box, HStack, IconButton, StackProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Item } from "./Item";
 

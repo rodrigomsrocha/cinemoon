@@ -3,6 +3,7 @@ import { FiPlus } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
 import { useSetRecoilState } from "recoil";
 import { movieIdState } from "../../../recoil/movie/movieId";
+import { infoBarState } from "../../../recoil/movie/infoBar";
 
 interface ItemProps {
   movie: {
@@ -18,9 +19,11 @@ interface ItemProps {
 }
 
 export const Item = ({ movie }: ItemProps) => {
+  const setInfoBar = useSetRecoilState(infoBarState);
   const setMovieId = useSetRecoilState(movieIdState);
   const handleMovieClick = (movieId: string) => {
     setMovieId(movieId);
+    setInfoBar(true);
   };
 
   return (
