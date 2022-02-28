@@ -9,7 +9,7 @@ import {
   DrawerBody,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { infoBarState } from "../../../recoil/movie/infoBar";
+import { infoBarState } from "../../recoil/movie/infoBar";
 
 const shimmer = keyframes`
   100% {transform: translateX(100%)}
@@ -44,17 +44,17 @@ export function LoadingInfobar() {
   return (
     <Drawer size="xs" isOpen={infoBar} onClose={handleClose}>
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent borderLeftWidth="1px" borderColor="purple.500" py="8">
         <DrawerHeader>
           <Box
             minW="200px"
             w="200px"
             bg="#dddbdd"
+            mx="auto"
             minH="300px"
             borderRadius={10}
             position="relative"
             overflow="hidden"
-            display="inline-block"
             _after={shimmerAfter}
           ></Box>
         </DrawerHeader>
@@ -68,7 +68,7 @@ export function LoadingInfobar() {
             borderRadius={6}
             _after={shimmerAfter}
           ></Box>
-          <VStack w="full" align="start">
+          <VStack w="full" align="start" mt="8">
             <Box
               w="full"
               h="4"

@@ -11,6 +11,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  IconButton,
   Image,
   Spacer,
   Text,
@@ -18,10 +19,10 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaImdb } from "react-icons/fa";
-import { FiClock } from "react-icons/fi";
+import { FiClock, FiPlus } from "react-icons/fi";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { infoBarState } from "../../../recoil/movie/infoBar";
-import { movieDetailsState } from "../../../recoil/movie/movieDetails";
+import { infoBarState } from "../../recoil/movie/infoBar";
+import { movieDetailsState } from "../../recoil/movie/movieDetails";
 
 export const InfoBar = () => {
   const [infoBar, setInfoBar] = useRecoilState(infoBarState);
@@ -42,7 +43,18 @@ export const InfoBar = () => {
       <DrawerContent borderLeftWidth="1px" borderColor="purple.500" py="8">
         <DrawerHeader>
           {movieDetails?.poster ? (
-            <Image mx="auto" borderRadius={10} src={movieDetails.poster} />
+            <Box position="relative">
+              <Image mx="auto" borderRadius={10} src={movieDetails.poster} />
+              <IconButton
+                position="absolute"
+                aria-label="Add to list"
+                icon={<FiPlus />}
+                colorScheme="purple"
+                transform="auto"
+                bottom="-4"
+                right="4"
+              />
+            </Box>
           ) : (
             <Flex
               mx="auto"
@@ -74,6 +86,7 @@ export const InfoBar = () => {
               backgroundColor: `#6B46C1`,
             },
           }}
+          mt="4"
         >
           {movieDetails && (
             <>

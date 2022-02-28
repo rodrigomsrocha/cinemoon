@@ -2,8 +2,8 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
 import { useSetRecoilState } from "recoil";
-import { movieIdState } from "../../../recoil/movie/movieId";
-import { infoBarState } from "../../../recoil/movie/infoBar";
+import { movieIdState } from "../../recoil/movie/movieId";
+import { infoBarState } from "../../recoil/movie/infoBar";
 
 interface ItemProps {
   movie: {

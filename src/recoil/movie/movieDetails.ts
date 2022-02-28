@@ -22,7 +22,7 @@ export const movieDetailsState = selector({
 
     return {
       poster: `https://image.tmdb.org/t/p/w200/${posterData.posters[0].file_path}`,
-      title: movie.original_title,
+      title: movie.title,
       synopsis: movie.overview,
       runtime,
       rating: rating.imdbRating,

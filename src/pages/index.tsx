@@ -1,9 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
-import { resourceLimits } from "worker_threads";
 import { movieApi, ratingApi } from "../services/api";
-import { Main } from "./components/Main";
-import { MovieSlide } from "./components/MovieSlide";
+import { Main } from "../components/Main";
+import { MovieSlide } from "../components/MovieSlide";
 
 interface MovieProps {
   id: string;

@@ -16,6 +16,7 @@ export const Sidebar = () => {
       padding="12"
       zIndex={10}
       bg="white"
+      boxShadow="lg"
     >
       <Heading mb={4} size="lg" color="purple.500">
         Cinemoon

@@ -2,11 +2,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import React from "react";
 import { RecoilRoot } from "recoil";
-import "../styles/globals.css";
-import { InfoBar } from "./components/InfoBar";
-import { LoadingInfobar } from "./components/InfoBar/LoadingInfobar";
-import { Layout } from "./components/Layout";
-import { Sidebar } from "./components/Sidebar";
+import { InfoBar } from "../components/InfoBar";
+import { LoadingInfobar } from "../components/InfoBar/LoadingInfobar";
+import { Layout } from "../components/Layout";
+import { Sidebar } from "../components/Sidebar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
